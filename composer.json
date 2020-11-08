@@ -1,6 +1,7 @@
 {
   "name": "fullpipe/check-them",
   "description": "Health checks for external services",
+  "keywords": ["healthz", "health check", "k8s"],
   "type": "library",
   "license": "MIT",
   "authors": [
