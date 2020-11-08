@@ -208,13 +208,15 @@ $check = (new AllInOneCheck())
 
 ```bash
 composer install
-docker-compose up -d
+docker-compose -f tests/docker-compose.yml up -d
 ./vendor/bin/phpunit
 ```
 
 or if you want to play with service availability
 
 ```bash
+docker-compose -f tests/docker-compose.yml up -d
 php ./tests/realtime_test.php
+docker-compose -f tests/docker-compose.yml restart mysql57
 ```
 
