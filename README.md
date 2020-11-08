@@ -51,10 +51,10 @@ if(!$status->isUp()) {
 
 ### PDOCheck
 
-It is just a simple wraper over [php.PDO](https://www.php.net/manual/en/book.pdo.php).
-It has same constructor signature as `PDO` class. In theory it works with all
-[pdo drivers](https://www.php.net/manual/en/pdo.drivers.php), but was tested
-only against mysql and postgres.
+It is just a simple wrapper over [php.PDO](https://www.php.net/manual/en/book.pdo.php).
+It has the same constructor signature as the `PDO` class. In theory, it works with all
+[PDO drivers](https://www.php.net/manual/en/pdo.drivers.php), but was tested
+only against MySQL and Postgres.
 
 
 #### Examples
@@ -139,7 +139,7 @@ $check = new PredisCheck($client);
 
 ### SocketCheck
 
-Connects to service and waits single char from service over a socket connection.
+Connects to service and waits for single char from service over a socket connection.
 
 #### Examples
 
@@ -187,7 +187,7 @@ $check = (new SocketConnectionCheck('mysql:3306'))
 
 ### AllInOneCheck
 
-Checks all children to be `up`.
+Checks all children to be available.
 
 #### Examples
 
