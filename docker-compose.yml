@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  mysql57:
+    image: mysql:5.7
+    ports:
+      - 8001:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_pass
+  postgres13:
+    image: postgres:13
+    ports:
+      - 8002:5432
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: test_user
+      POSTGRES_DB: test_db
+  redis:
+    image: redis:6.0.9-alpine
+    ports:
+      - 8003:6379
+  redis_with_password:
+    image: redis:6.0.9-alpine
+    command: redis-server --requirepass test_pass
+    ports:
+      - 8004:6379
+  jmock:
+    image: fullpipe/jmock
+    ports:
+      - 8005:9090
+    volumes:
+      - ./tests/Resource/jmock:/mocks
+  rabbitmq:
+    image: rabbitmq:3.8.9-alpine
+    ports:
+      - 8006:5672

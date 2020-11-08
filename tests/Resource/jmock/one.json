@@ -1,0 +1,22 @@
+[
+  {
+    "request": {
+      "method": "GET",
+      "url": "/get_ok"
+    },
+    "response": {
+      "code": 200,
+      "body": "OK"
+    }
+  },
+  {
+    "request": {
+      "method": "GET",
+      "url": "/get_fail"
+    },
+    "response": {
+      "code": 503,
+      "body": "FAIL"
+    }
+  }
+]
