@@ -1,6 +1,6 @@
 {
   "name": "fullpipe/check-them",
-  "description": "Check external services state for k8s",
+  "description": "Health checks for external services",
   "type": "library",
   "license": "MIT",
   "authors": [
