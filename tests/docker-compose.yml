@@ -32,7 +32,7 @@ services:
     ports:
       - 8005:9090
     volumes:
-      - ./tests/Resource/jmock:/mocks
+      - ./Resource/jmock:/mocks
   rabbitmq:
     image: rabbitmq:3.8.9-alpine
     ports:
