@@ -11,6 +11,10 @@ class SocketClient
     /**
      * @var string
      */
+    private $dsn;
+    /**
+     * @var string
+     */
     private $remoteSocket;
 
     /**
@@ -29,17 +33,37 @@ class SocketClient
     private $socket;
 
     public function __construct(
-        string $remoteSocket,
+        string $dsn,
         int $connectionTimeout = 1,
         int $streamTimeout = 1
     ) {
-        $this->remoteSocket = $remoteSocket;
+        $this->dsn = $dsn;
         $this->connectionTimeout = $connectionTimeout;
         $this->streamTimeout = $streamTimeout;
     }
 
     public function connect()
     {
+        $validTransports = \stream_get_transports();
+        $parsed = \parse_url($this->dsn);
+        $remoteSocket = '';
+
+        if (\in_array($parsed['scheme'] ?? null, $validTransports)) {
+            $remoteSocket .= $parsed['scheme'].'://';
+        }
+
+        $remoteSocket .= $parsed['host'];
+
+        if ($parsed['port'] ?? null) {
+            $remoteSocket .= ':'.$parsed['port'];
+        }
+
+        if ($parsed['path'] ?? null) {
+            $remoteSocket .= '/'.$parsed['path'];
+        }
+
+        $this->remoteSocket = $remoteSocket;
+
         $this->socket = @\stream_socket_client(
             $this->remoteSocket,
             $errno,
